@@ -16,15 +16,15 @@
   <meta name="author" content="lvberry">
   <meta name="keywords" content="">
   
-    <meta name="description" content="标题的正确使用">
+    <meta name="description" content="css字典，没有任何实践经验，仅供参考">
 <meta property="og:type" content="article">
-<meta property="og:title" content="标题的使用">
-<meta property="og:url" content="https://lvberry.cn/2023/12/31/title_usage/index.html">
+<meta property="og:title" content="css grammer">
+<meta property="og:url" content="https://lvberry.cn/2024/01/01/css_grammar/index.html">
 <meta property="og:site_name" content="lvberry">
-<meta property="og:description" content="标题的正确使用">
+<meta property="og:description" content="css字典，没有任何实践经验，仅供参考">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-12-31T12:10:55.514Z">
-<meta property="article:modified_time" content="2024-01-01T14:55:54.631Z">
+<meta property="article:published_time" content="2024-01-01T14:54:04.931Z">
+<meta property="article:modified_time" content="2024-01-01T14:54:45.429Z">
 <meta property="article:author" content="lvberry">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>标题的使用 - lvberry</title>
+  <title>css grammer - lvberry</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="标题的使用"></span>
+            <span id="subtitle" data-typed-text="css grammer"></span>
           
         </div>
 
@@ -213,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-31 20:10" pubdate>
-          December 31, 2023 pm
+        <time datetime="2024-01-01 22:54" pubdate>
+          January 1, 2024 pm
         </time>
       </span>
     
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          30 字
+          1.1k 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          1 分钟
+          10 分钟
         
       </span>
     
@@ -273,14 +273,164 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">标题的使用</h1>
+            <h1 id="seo-header">css grammer</h1>
             
             
               <div class="markdown-body">
                 
-                <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">标题</span><br><span class="hljs-attr">excerpt:</span> <span class="hljs-string">摘要</span><br><span class="hljs-attr">hide:</span> <span class="hljs-literal">false</span> <span class="hljs-comment"># true为隐藏</span><br><span class="hljs-attr">achive:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 归档</span><br><span class="hljs-attr">sticky:</span> <span class="hljs-number">0</span> <span class="hljs-comment"># 用于给文章排序，越大越靠前</span><br><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
+                <h3 id="基础选择器"><a href="#基础选择器" class="headerlink" title="基础选择器"></a>基础选择器</h3><h4 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h4><ul>
+<li>使用标签名作为选择器</li>
+<li>选中同名标签设置相同的样式</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span> &#123;<br>    <span class="hljs-attribute">color</span>: red;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<h4 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.class-name</span> &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<h4 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a><code>id</code>选择器</h4><ul>
+<li>同一个<code>id</code>选择器在页面中只能用一次</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-id">#id-name</span> &#123; <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="通配符选择器"><a href="#通配符选择器" class="headerlink" title="通配符选择器"></a>通配符选择器</h4><ul>
+<li>选择所有标签设置相同样式</li>
+<li>开发中一般用来清除标签的默认样式</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css">* &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="画盒子"><a href="#画盒子" class="headerlink" title="画盒子"></a>画盒子</h3><ul>
+<li><code>px</code>表示像素</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>; <br><span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br><span class="hljs-attribute">background</span>: red;<br></code></pre></td></tr></table></figure>
+
+<h3 id="文字控制属性"><a href="#文字控制属性" class="headerlink" title="文字控制属性"></a>文字控制属性</h3><h4 id="字体大小"><a href="#字体大小" class="headerlink" title="字体大小"></a>字体大小</h4><ul>
+<li>谷歌浏览器字体默认大小为<code>16px</code></li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="字体粗细"><a href="#字体粗细" class="headerlink" title="字体粗细"></a>字体粗细</h4><ul>
+<li>数字或关键字（一般写数字）<ul>
+<li>正常：<code>400, normal</code></li>
+<li>加粗：<code>700, bold</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="字体倾斜"><a href="#字体倾斜" class="headerlink" title="字体倾斜"></a>字体倾斜</h4><ul>
+<li>常用于清除文字默认的倾斜效果<ul>
+<li>正常：<code>normal</code></li>
+<li>倾斜：<code>italic</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-style</span>: italic;<br></code></pre></td></tr></table></figure>
+
+<h4 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h4><ul>
+<li>数字<code>px</code>或纯数字（表示当前标签<code>font-size</code>属性值的倍数）</li>
+<li>行高 &#x3D; 文字上间距 + 文字高度 + 文字下间距</li>
+<li>行高 &#x3D; 某行文字的最顶端（最底端）到下一行文字的最顶端（最底端）的距离</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">line-height</span>: <span class="hljs-number">16px</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="文字垂直居中"><a href="#文字垂直居中" class="headerlink" title="文字垂直居中"></a>文字垂直居中</h4><ul>
+<li>令<code>line-height: 所属盒子的高度;</code></li>
+<li>只适用于单行文字</li>
+</ul>
+<h4 id="字体族"><a href="#字体族" class="headerlink" title="字体族"></a>字体族</h4><ul>
+<li>多个字体之间用逗号隔开</li>
+<li>浏览器会从前往后直到找到一个可用的字体</li>
+<li>最后一个字体一般为一个字体族名</li>
+<li>网页开发推荐使用无衬线字体，即<code>sans-serif</code></li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif;<br></code></pre></td></tr></table></figure>
+
+<h4 id="字体复合属性"><a href="#字体复合属性" class="headerlink" title="字体复合属性"></a>字体复合属性</h4><ul>
+<li>一般用于设置网页文字公共样式</li>
+<li><code>font: 是否倾斜 是否加粗 字号/行高 字体;</code></li>
+<li>必须按顺序书写，空格隔开</li>
+<li>字号和字体值必须写，否则<code>font</code>属性不生效</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font</span>: normal <span class="hljs-number">400</span> <span class="hljs-number">16px</span>/<span class="hljs-number">1</span> Microsoft YaHei;<br><span class="hljs-attribute">font</span>: <span class="hljs-number">14px</span>/normal Arial,Helvetica,Sans-Serif;<br></code></pre></td></tr></table></figure>
+
+<h4 id="文本缩进"><a href="#文本缩进" class="headerlink" title="文本缩进"></a>文本缩进</h4><ul>
+<li>数字<code>px</code>或数字<code>em</code>（<code>1em</code> &#x3D; 当前标签的字号大小）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">text-indent</span>: <span class="hljs-number">2em</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="文本对齐"><a href="#文本对齐" class="headerlink" title="文本对齐"></a>文本对齐</h4><ul>
+<li><code>left(default)/center/right</code></li>
+<li>调整的是内容的对齐方式，而不是标签的对齐方式</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">text-align</span>: center;<br></code></pre></td></tr></table></figure>
+
+<h4 id="图片居中"><a href="#图片居中" class="headerlink" title="图片居中"></a>图片居中</h4><ul>
+<li><code>&lt;div&gt;&lt;img&gt;&lt;/div&gt;</code></li>
+<li>设置<code>div</code>的<code>text-align</code>属性为<code>center</code></li>
+</ul>
+<h4 id="修饰线"><a href="#修饰线" class="headerlink" title="修饰线"></a>修饰线</h4><ul>
+<li><code>none(无), underline(下划线), line-through(删除线), overline(上划线)</code></li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">text-decoration</span>: none;<br></code></pre></td></tr></table></figure>
+
+<h4 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h4><ul>
+<li>颜色关键字</li>
+<li><code>rgb</code>表示法</li>
+<li><code>rgba</code>表示法(<code>a</code>表示透明度, 取值为<code>0~1</code>之间的小数, <code>0</code>表示完全透明, <code>1</code>表示完全不透明)</li>
+<li>十六进制表示法</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">color</span>: red;<br><span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br><span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);<br><span class="hljs-attribute">color</span>: <span class="hljs-number">#ff0000</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="复合选择器"><a href="#复合选择器" class="headerlink" title="复合选择器"></a>复合选择器</h3><h4 id="后代选择器"><a href="#后代选择器" class="headerlink" title="后代选择器"></a>后代选择器</h4><ul>
+<li>选中某元素的后代元素</li>
+<li>空格隔开即可</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">father son &#123; &#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="子代选择器"><a href="#子代选择器" class="headerlink" title="子代选择器"></a>子代选择器</h4><ul>
+<li>选中某元素的子代元素（最近的子级）</li>
+<li>大于号隔开即可</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">father &gt; son &#123; &#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="并集选择器"><a href="#并集选择器" class="headerlink" title="并集选择器"></a>并集选择器</h4><ul>
+<li>选中多组标签设置相同的样式</li>
+<li>逗号隔开即可（推荐逗号 + 换行）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">selector1,<br>selector2,<br>... &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="交集选择器"><a href="#交集选择器" class="headerlink" title="交集选择器"></a>交集选择器</h4><ul>
+<li>选中同时满足多个条件的元素</li>
+<li>选择器之间连写即可</li>
+<li>标签选择器（若有）应放在最前面</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">selector1selector2 &#123; &#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h4><ul>
+<li>伪类：元素的状态</li>
+<li>选中元素的某个状态设置样式</li>
+<li><code>link(访问前), visited(访问后), hover(鼠标悬停), active(点击瞬间)</code></li>
+<li>设置超链接的状态时按照<code>link, visited, hover, active</code>的顺序写</li>
+<li>任何标签都可以设置鼠标悬停状态</li>
+<li>开发中一般设置默认超链接样式和鼠标悬停超链接样式</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">selector: hover &#123; &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="CSS特性"><a href="#CSS特性" class="headerlink" title="CSS特性"></a><code>CSS</code>特性</h3><h4 id="继承性"><a href="#继承性" class="headerlink" title="继承性"></a>继承性</h4><ul>
+<li>子级默认继承父级的文字控制属性</li>
+<li>开发中一般在<code>body</code>中设置文字控制属性, 其他需要改变的单独设置</li>
+<li>标签本身的特殊样式不会被继承覆盖，即继承失效（如超链接的蓝色不会被覆盖）</li>
+</ul>
+<h4 id="层叠性"><a href="#层叠性" class="headerlink" title="层叠性"></a>层叠性</h4><ul>
+<li>相同的属性会覆盖：后面的<code>CSS</code>属性覆盖前面的<code>CSS</code>属性</li>
+<li>不同的属性会叠加：不同的<code>CSS</code>属性都生效</li>
+</ul>
+<h4 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h4><ul>
+<li>优先级（又称权重）：当一个标签使用了多种选择器时，基于不同种类的选择器的匹配规则</li>
+<li>规则：优先级高的样式生效</li>
+<li><code>通配符选择器 &lt; 标签选择器 &lt; 类选择器 &lt; id选择器 &lt; 行内样式 &lt; !important</code></li>
+<li>即选中标签的范围越大，优先级越低</li>
+</ul>
+<h3 id="背景属性"><a href="#背景属性" class="headerlink" title="背景属性"></a>背景属性</h3><h4 id="背景色"><a href="#背景色" class="headerlink" title="背景色"></a>背景色</h4><h4 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h4><h4 id="背景图片平铺方式"><a href="#背景图片平铺方式" class="headerlink" title="背景图片平铺方式"></a>背景图片平铺方式</h4><h4 id="背景图片缩放"><a href="#背景图片缩放" class="headerlink" title="背景图片缩放"></a>背景图片缩放</h4><h4 id="背景图片固定"><a href="#背景图片固定" class="headerlink" title="背景图片固定"></a>背景图片固定</h4><h4 id="背景复合属性"><a href="#背景复合属性" class="headerlink" title="背景复合属性"></a>背景复合属性</h4><h3 id="显示模式"><a href="#显示模式" class="headerlink" title="显示模式"></a>显示模式</h3><h4 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h4><h4 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h4><h4 id="行内块元素"><a href="#行内块元素" class="headerlink" title="行内块元素"></a>行内块元素</h4>
                 
               </div>
             
@@ -297,8 +447,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>标题的使用</div>
-      <div>https://lvberry.cn/2023/12/31/title_usage/</div>
+      <div>css grammer</div>
+      <div>https://lvberry.cn/2024/01/01/css_grammar/</div>
     </div>
     <div class="license-meta">
       
@@ -310,7 +460,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>December 31, 2023</div>
+          <div>January 1, 2024</div>
         </div>
       
       
@@ -342,18 +492,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/01/html_grammar/" title="html grammar">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">html grammar</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/31/java_grammar/" title="Java Grammar">
-                        <span class="hidden-mobile">Java Grammar</span>
+                      <a href="/2024/01/01/html_grammar/" title="html grammar">
+                        <span class="hidden-mobile">html grammar</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
