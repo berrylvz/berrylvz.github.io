@@ -67,6 +67,12 @@ timezone: Asia/Shanghai
 - 部署到 GitHub 用户主页站点时，使用 `/`
 - 部署到仓库主页站点时，例如 `https://user.github.io/blog/`，使用 `/blog`
 
+当前仓库是 `berrylvz/berrylvz.github.io`，属于 GitHub 用户主页仓库，因此应使用：
+
+```yaml
+base_url: /
+```
+
 ## 写文章
 
 文章放在 `posts/` 目录下，文件名格式固定为：
@@ -224,6 +230,13 @@ http://localhost:8000
 2. GitHub Pages 已启用
 3. 默认分支为 `main`
 4. `config.yml` 里的 `base_url` 配置正确
+
+访问地址说明：
+
+- 博客站点地址：`https://berrylvz.github.io/`
+- GitHub 仓库地址：`https://github.com/berrylvz/berrylvz.github.io`
+
+如果你打开的是 GitHub 仓库地址，看到的是仓库页面和 `readme.md`，不是博客站点本身。
 
 ## 常见修改入口
 

@@ -1,5 +1,5 @@
 site_title: My Blog
-base_url: https://berrylvz.github.io/blog/
+base_url: /
 author: Alice
 timezone: Asia/Shanghai
 navigation:
