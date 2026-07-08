@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 try:
     import markdown
@@ -65,6 +66,9 @@ def normalize_base_url(value: Any) -> str:
     if not isinstance(value, str) or not value.strip():
         raise BuildError("`base_url` must be a non-empty string")
     value = value.strip()
+    parsed = urlparse(value)
+    if parsed.scheme and parsed.netloc:
+        return value.rstrip("/")
     if value == "/":
         return "/"
     return "/" + value.strip("/")
@@ -246,9 +250,12 @@ def clean_output_dir() -> None:
 
 def join_base_url(base_url: str, path: str) -> str:
     normalized = "/" + path.lstrip("/")
+    parsed = urlparse(base_url)
+    if parsed.scheme and parsed.netloc:
+        return f"{base_url.rstrip('/')}{normalized}"
     if base_url == "/":
         return normalized
-    return f"{base_url}{normalized}"
+    return f"{base_url.rstrip('/')}{normalized}"
 
 
 def build_environment(base_url: str) -> Environment:
