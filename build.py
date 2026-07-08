@@ -295,6 +295,7 @@ def build_site() -> None:
     render_posts(env, site, posts)
     render_index(env, site, posts)
     copy_static()
+    (OUTPUT_DIR / ".nojekyll").write_text("", encoding="utf-8")
 
 
 def main() -> int:
