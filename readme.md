@@ -215,7 +215,7 @@ http://localhost:8000
 
 部署配置位于 [.github/workflows/deploy.yml](./.github/workflows/deploy.yml)。
 
-默认行为：
+当前 workflow 的默认行为：
 
 - push 到 `main` 分支时触发
 - 安装 Python 3.12
@@ -224,19 +224,110 @@ http://localhost:8000
 - 上传 `public/`
 - 发布到 GitHub Pages
 
-使用前请确认：
+### 1. 先确认仓库类型
 
-1. 仓库已推送到 GitHub
-2. GitHub Pages 已启用
+GitHub Pages 有两种常见仓库形态：
+
+- 用户主页仓库：仓库名固定为 `<username>.github.io`
+- 项目页仓库：普通仓库名，例如 `blog`
+
+当前仓库是：
+
+```text
+berrylvz/berrylvz.github.io
+```
+
+这属于 **GitHub 用户主页仓库**，因此：
+
+- 站点地址应为 `https://berrylvz.github.io/`
+- `config.yml` 中的 `base_url` 应为 `/`
+
+如果将来你把这套博客迁移到普通仓库，例如 `berrylvz/blog`，那时才需要把 `base_url` 改成 `/blog`。
+
+### 2. GitHub 仓库设置
+
+在 GitHub 仓库页面打开：
+
+```text
+Settings -> Pages
+```
+
+必须确认以下配置：
+
+1. `Build and deployment -> Source` 选择 `GitHub Actions`
+2. 不要选择 `Deploy from a branch`
 3. 默认分支为 `main`
-4. `config.yml` 里的 `base_url` 配置正确
 
-访问地址说明：
+这一点非常关键：
+
+- 选择 `GitHub Actions` 时，GitHub 会发布 workflow 生成的 `public/` 产物
+- 如果仍然使用 `Deploy from a branch`，GitHub 可能会直接拿仓库根目录内容发布，导致页面显示成仓库里的 `readme.md`
+
+### 3. 首次部署步骤
+
+建议按以下顺序操作：
+
+1. 确认 [config.yml](./config.yml) 里的 `base_url` 正确
+2. 确认 [.github/workflows/deploy.yml](./.github/workflows/deploy.yml) 已提交到 `main`
+3. 在 GitHub 的 `Settings -> Pages` 中把 `Source` 改成 `GitHub Actions`
+4. push 一次新提交，或在 `Actions` 页面手动执行 workflow
+5. 等待 `build` 和 `deploy` 两个 job 都成功
+
+### 4. 部署完成后的访问地址
+
+部署完成后应访问：
+
+```text
+https://berrylvz.github.io/
+```
+
+不要访问：
+
+```text
+https://berrylvz.github.io/blog/
+```
+
+因为当前仓库不是项目页仓库，`/blog` 会是错误路径。
+
+### 5. 常见问题排查
+
+如果部署后首页显示的是 `readme.md` 内容，通常意味着：
+
+- 你打开的是 GitHub 仓库页面，而不是 Pages 站点
+- 或者 GitHub Pages 仍然在使用 `Deploy from a branch`
+
+请区分这两个地址：
 
 - 博客站点地址：`https://berrylvz.github.io/`
 - GitHub 仓库地址：`https://github.com/berrylvz/berrylvz.github.io`
 
-如果你打开的是 GitHub 仓库地址，看到的是仓库页面和 `readme.md`，不是博客站点本身。
+如果部署后页面只有文本链接、没有样式，通常意味着：
+
+- `base_url` 配置错误
+- 静态资源路径拼接错误
+- 站点路径和仓库类型不匹配
+
+当前仓库应使用：
+
+```yaml
+base_url: /
+```
+
+如果 GitHub Actions 报 `deploy-pages` 相关错误，优先检查：
+
+1. `Settings -> Pages -> Source` 是否为 `GitHub Actions`
+2. workflow 是否包含独立的 `build` 和 `deploy` job
+3. `public/` 是否被正确上传为 Pages artifact
+
+### 6. 部署前检查清单
+
+在 push 之前，建议逐项确认：
+
+1. 仓库已推送到 GitHub
+2. `main` 分支包含最新代码
+3. `Settings -> Pages -> Source` 已切换为 `GitHub Actions`
+4. `config.yml` 中的 `base_url` 与仓库类型匹配
+5. 本地执行 `uv run python build.py` 可以成功生成 `public/`
 
 ## 常见修改入口
 
