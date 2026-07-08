@@ -1,0 +1,7 @@
+site_title: My Blog
+base_url: https://berrylvz.github.io/blog/
+author: Alice
+timezone: Asia/Shanghai
+navigation:
+  - title: 首页
+    url: /

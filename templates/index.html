@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ site.site_title }}{% endblock %}
+{% block description %}{{ site.site_title }}{% endblock %}
+
+{% block content %}
+<section class="post-list">
+  {% if posts %}
+    {% for post in posts %}
+    <a class="post-card-link" href="{{ page_url(post.url) }}">
+      <article class="post-card">
+        <h2>{{ post.title }}</h2>
+        {% if post.summary %}
+        <p class="post-summary">{{ post.summary }}</p>
+        {% endif %}
+      </article>
+    </a>
+    {% endfor %}
+  {% else %}
+    <p>暂无文章。</p>
+  {% endif %}
+</section>
+{% endblock %}

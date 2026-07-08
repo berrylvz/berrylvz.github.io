@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} | {{ site.site_title }}{% endblock %}
+{% block description %}{{ post.summary or post.title }}{% endblock %}
+
+{% block content %}
+<article class="post-detail">
+  <p class="post-date">{{ post.date }}</p>
+
+  <div class="post-body">
+    {{ post.content | safe }}
+  </div>
+
+  <p class="back-link">
+    <a href="{{ page_url('/') }}">返回首页</a>
+  </p>
+</article>
+{% endblock %}
