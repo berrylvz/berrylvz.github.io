@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import re
 import shutil
 import sys
@@ -273,13 +274,23 @@ def join_base_url(base_url: str, path: str) -> str:
     return f"{base_url.rstrip('/')}{normalized}"
 
 
+def versioned_static_url(base_url: str, path: str) -> str:
+    relative_path = path.lstrip("/")
+    url = join_base_url(base_url, f"/static/{relative_path}")
+    asset_path = STATIC_DIR / relative_path
+    if not asset_path.is_file():
+        return url
+    digest = hashlib.sha256(asset_path.read_bytes()).hexdigest()[:12]
+    return f"{url}?v={digest}"
+
+
 def build_environment(base_url: str) -> Environment:
     env = Environment(
         loader=FileSystemLoader(str(TEMPLATES_DIR)),
         autoescape=select_autoescape(["html", "xml"]),
     )
     env.globals["base_url"] = base_url
-    env.globals["static_url"] = lambda path: join_base_url(base_url, f"/static/{path.lstrip('/')}")
+    env.globals["static_url"] = lambda path: versioned_static_url(base_url, path)
     env.globals["page_url"] = lambda path: join_base_url(base_url, path)
     return env
 
