@@ -2,17 +2,29 @@
 
 {% block title %}{{ post.title }} | {{ site.site_title }}{% endblock %}
 {% block description %}{{ post.summary or post.title }}{% endblock %}
+{% block body_class %}post-page-body{% endblock %}
 
 {% block content %}
-<article class="post-detail">
-  <p class="post-date">{{ post.date }}</p>
+<div class="post-layout{% if not post.toc %} post-layout--without-toc{% endif %}">
+  <article class="post-detail">
+    <p class="post-date">{{ post.date }}</p>
 
-  <div class="post-body">
-    {{ post.content | safe }}
-  </div>
+    <div class="post-body">
+      {{ post.content | safe }}
+    </div>
 
-  <p class="back-link">
-    <a href="{{ page_url('/') }}">返回首页</a>
-  </p>
-</article>
+    <p class="back-link">
+      <a href="{{ page_url('/') }}">返回首页</a>
+    </p>
+  </article>
+
+  {% if post.toc %}
+  <aside class="post-toc" aria-labelledby="post-toc-title">
+    <h2 id="post-toc-title">目录</h2>
+    <nav aria-label="文章目录">
+      {{ post.toc | safe }}
+    </nav>
+  </aside>
+  {% endif %}
+</div>
 {% endblock %}

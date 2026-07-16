@@ -69,6 +69,86 @@ a:hover {
   margin-top: 28px;
 }
 
+.post-page-body .site-shell {
+  width: min(1180px, calc(100% - 32px));
+}
+
+.post-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 24px;
+  align-items: start;
+}
+
+.post-layout--without-toc {
+  grid-template-columns: minmax(0, 920px);
+  justify-content: center;
+}
+
+.post-toc {
+  position: sticky;
+  top: 24px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  padding: 20px;
+  background: rgba(255, 253, 248, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.post-toc h2 {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-family: system-ui, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.post-toc .toc > ul {
+  margin: 0;
+  padding: 0;
+}
+
+.post-toc ul {
+  list-style: none;
+}
+
+.post-toc ul ul {
+  margin: 4px 0 0;
+  padding-left: 14px;
+  border-left: 1px solid var(--border);
+}
+
+.post-toc li + li {
+  margin-top: 4px;
+}
+
+.post-toc a {
+  display: block;
+  padding: 5px 8px;
+  color: var(--muted);
+  border-radius: 8px;
+  font-family: system-ui, sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.post-toc a:hover,
+.post-toc a:focus-visible,
+.post-toc a.is-active {
+  color: var(--accent);
+  background: rgba(180, 76, 47, 0.09);
+  text-decoration: none;
+}
+
+.post-body :is(h2, h3)[id] {
+  scroll-margin-top: 24px;
+}
+
 .hero {
   padding: 12px 4px 20px;
 }
@@ -193,10 +273,33 @@ a:hover {
     padding-top: 20px;
   }
 
+  .post-page-body .site-shell {
+    width: min(100% - 20px, 920px);
+  }
+
+  .post-layout,
+  .post-layout--without-toc {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .post-toc {
+    position: static;
+    grid-row: 1;
+    max-height: none;
+    padding: 16px 18px;
+    border-radius: 18px;
+  }
+
   .post-card,
   .post-detail,
   .site-header {
     padding: 18px;
     border-radius: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }

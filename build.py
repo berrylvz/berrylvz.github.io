@@ -13,6 +13,7 @@ try:
     import markdown
     import yaml
     from jinja2 import Environment, FileSystemLoader, select_autoescape
+    from markdown.extensions.toc import slugify_unicode
 except ImportError as exc:
     missing = getattr(exc, "name", "dependency")
     raise SystemExit(
@@ -43,6 +44,7 @@ class Post:
     summary: str
     draft: bool
     content: str
+    toc: str
     url: str
     output_path: Path
     source_path: Path
@@ -171,15 +173,25 @@ def validate_date(date_value: Any, source_name: str) -> str:
     return normalized
 
 
-def render_markdown(body: str) -> str:
-    return markdown.markdown(
-        body,
+def render_markdown(body: str) -> tuple[str, str]:
+    renderer = markdown.Markdown(
         extensions=[
             "fenced_code",
             "tables",
             "pymdownx.tilde",
+            "toc",
         ],
+        extension_configs={
+            "toc": {
+                "slugify": slugify_unicode,
+                "toc_depth": "2-3",
+                "title": "",
+            }
+        },
     )
+    content = renderer.convert(body)
+    toc = renderer.toc if renderer.toc_tokens else ""
+    return content, toc
 
 
 def load_posts(site_config: dict[str, Any]) -> list[Post]:
@@ -223,6 +235,8 @@ def load_posts(site_config: dict[str, Any]) -> list[Post]:
             raise BuildError(f"Duplicate output path detected: {output_key}")
         seen_output_paths.add(output_key)
 
+        content, toc = render_markdown(body)
+
         posts.append(
             Post(
                 title=title.strip(),
@@ -230,7 +244,8 @@ def load_posts(site_config: dict[str, Any]) -> list[Post]:
                 tags=tags,
                 summary=summary.strip(),
                 draft=draft,
-                content=render_markdown(body),
+                content=content,
+                toc=toc,
                 url=url,
                 output_path=output_path,
                 source_path=path,

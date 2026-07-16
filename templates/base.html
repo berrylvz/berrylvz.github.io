@@ -7,7 +7,7 @@
     <meta name="description" content="{% block description %}{{ site.site_title }}{% endblock %}">
     <link rel="stylesheet" href="{{ static_url('/css/style.css') }}">
   </head>
-  <body>
+  <body class="{% block body_class %}{% endblock %}">
     <div class="site-shell">
       <header class="site-header">
         <div class="brand">
