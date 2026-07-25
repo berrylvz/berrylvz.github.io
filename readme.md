@@ -51,7 +51,7 @@ uv pip install -r requirements.txt
 ```yaml
 site_title: My Blog
 base_url: /
-author: Alice
+author: Name
 timezone: Asia/Shanghai
 ```
 
