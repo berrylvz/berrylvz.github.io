@@ -1,4 +1,5 @@
 site_title: Berry's Blog
+site_description: 记录开发实践、工具与技术思考。
 base_url: /
 author: berrylvz
 timezone: Asia/Shanghai

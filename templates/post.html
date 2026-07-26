@@ -5,26 +5,25 @@
 {% block body_class %}post-page-body{% endblock %}
 
 {% block content %}
-<div class="post-layout{% if not post.toc %} post-layout--without-toc{% endif %}">
-  <article class="post-detail">
-    <p class="post-date">{{ post.date }}</p>
-
-    <div class="post-body">
-      {{ post.content | safe }}
-    </div>
-
-    <p class="back-link">
-      <a href="{{ page_url('/') }}">返回首页</a>
-    </p>
-  </article>
-
-  {% if post.toc %}
-  <aside class="post-toc" aria-labelledby="post-toc-title">
-    <h2 id="post-toc-title">目录</h2>
-    <nav aria-label="文章目录">
-      {{ post.toc | safe }}
-    </nav>
-  </aside>
-  {% endif %}
+<div class="reading-progress" aria-hidden="true">
+  <div class="reading-progress-bar"></div>
 </div>
+
+<article class="post-detail">
+  <a class="post-back-link" href="{{ page_url('/') }}">
+    <span aria-hidden="true">←</span> 返回
+  </a>
+
+  <p class="post-date">
+    <time datetime="{{ post.date }}">{{ post.date }}</time>
+  </p>
+
+  <div class="post-body">
+    {{ post.content | safe }}
+  </div>
+
+  <footer class="post-footer">
+    <a href="{{ page_url('/') }}"><span aria-hidden="true">←</span> 返回文章列表</a>
+  </footer>
+</article>
 {% endblock %}

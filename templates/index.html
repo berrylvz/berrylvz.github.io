@@ -4,14 +4,30 @@
 {% block description %}{{ site.site_title }}{% endblock %}
 
 {% block content %}
+<section class="blog-intro">
+  <h1>Blog</h1>
+  <p>{{ site.site_description or "记录开发实践、工具与技术思考。" }}</p>
+</section>
+
 <section class="post-list">
   {% if posts %}
     {% for post in posts %}
     <a class="post-card-link" href="{{ page_url(post.url) }}">
       <article class="post-card">
+        <div class="post-card-meta">
+          <time datetime="{{ post.date }}">{{ post.date }}</time>
+          <span class="post-arrow" aria-hidden="true">→</span>
+        </div>
         <h2>{{ post.title }}</h2>
         {% if post.summary %}
         <p class="post-summary">{{ post.summary }}</p>
+        {% endif %}
+        {% if post.tags %}
+        <ul class="post-tags" aria-label="标签">
+          {% for tag in post.tags %}
+          <li>{{ tag }}</li>
+          {% endfor %}
+        </ul>
         {% endif %}
       </article>
     </a>
