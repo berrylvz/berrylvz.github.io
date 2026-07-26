@@ -1,13 +1,13 @@
 ---
-title: 我的第一篇博客
+title: Markdown Syntax
 date: 2026-07-08
-summary: 这是一篇用于测试个人博客系统的文章。
+summary: An Examle of Markdown Syntax
 draft: false
 ---
 
-# 我的第一篇博客
+# Markdown Syntax
 
-这里是正文内容。这个示例文章用于验证静态博客构建流程是否正常，也用于展示常见的 Markdown 语法。
+Markdown Syntax
 
 ## 小节标题
 
