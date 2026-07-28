@@ -243,6 +243,24 @@ a {
   margin-bottom: 6px;
 }
 
+.post-body .task-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.post-body .task-list-item {
+  list-style: none;
+}
+
+.post-body .task-list-item input[type="checkbox"] {
+  width: 1em;
+  height: 1em;
+  margin: 0 0.55em 0 0;
+  accent-color: var(--blue);
+  vertical-align: -0.12em;
+  opacity: 1;
+}
+
 .post-body a {
   color: var(--blue);
   border-bottom: 1px solid var(--border-light);

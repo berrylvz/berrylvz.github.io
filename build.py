@@ -28,6 +28,7 @@ CONFIG_PATH = ROOT / "config.yml"
 POSTS_DIR = ROOT / "posts"
 TEMPLATES_DIR = ROOT / "templates"
 STATIC_DIR = ROOT / "static"
+FAVICON_PATH = ROOT / "favicon.svg"
 OUTPUT_DIR = ROOT / "public"
 OUTPUT_POSTS_DIR = OUTPUT_DIR / "posts"
 
@@ -127,6 +128,8 @@ def ensure_required_inputs() -> None:
         raise BuildError("Required directory not found: templates/")
     if not STATIC_DIR.is_dir():
         raise BuildError("Required directory not found: static/")
+    if not FAVICON_PATH.is_file():
+        raise BuildError("Required file not found: favicon.svg")
 
     missing_templates = [name for name in REQUIRED_TEMPLATES if not (TEMPLATES_DIR / name).is_file()]
     if missing_templates:
@@ -179,6 +182,7 @@ def render_markdown(body: str) -> tuple[str, str]:
         extensions=[
             "fenced_code",
             "tables",
+            "pymdownx.tasklist",
             "pymdownx.tilde",
             "toc",
         ],
@@ -310,6 +314,7 @@ def render_posts(env: Environment, site: dict[str, Any], posts: list[Post]) -> N
 
 def copy_static() -> None:
     shutil.copytree(STATIC_DIR, OUTPUT_DIR / "static", dirs_exist_ok=True)
+    shutil.copy2(FAVICON_PATH, OUTPUT_DIR / FAVICON_PATH.name)
 
 
 def build_site() -> None:

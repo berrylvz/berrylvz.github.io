@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ site.site_title }}{% endblock %}</title>
     <meta name="description" content="{% block description %}{{ site.site_title }}{% endblock %}">
+    <link rel="icon" href="{{ page_url('/favicon.svg') }}" type="image/svg+xml">
     <link rel="stylesheet" href="{{ static_url('/css/style.css') }}">
   </head>
   <body class="{% block body_class %}{% endblock %}">
