@@ -10,6 +10,16 @@
 - 文章详情页展示正文内容，不额外显示标题摘要块
 - 支持 GitHub Pages 自动部署
 
+## 常用命令
+
+```shell
+uv run python new.py -n hello-world
+
+uv run python build.py
+
+uv run python -m http.server 8000 --directory public
+```
+
 ## 项目结构
 
 ```text

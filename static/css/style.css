@@ -308,6 +308,81 @@ a {
   line-height: 1.6;
 }
 
+.post-body .code-block {
+  position: relative;
+  margin: 20px 0;
+}
+
+.post-body .code-block pre {
+  margin: 0;
+  padding-top: 48px;
+}
+
+.code-copy-button {
+  position: absolute;
+  z-index: 1;
+  top: 9px;
+  right: 9px;
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  padding: 6px;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  background: var(--background);
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: color 150ms ease, border-color 150ms ease,
+    background-color 150ms ease;
+}
+
+.code-copy-button:hover,
+.code-copy-button:focus-visible {
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+.code-copy-button:focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 0.25);
+  outline-offset: 2px;
+}
+
+.code-copy-button.is-success {
+  color: #15803d;
+  border-color: #86efac;
+  background: #f0fdf4;
+}
+
+.code-copy-button.is-error {
+  color: #b91c1c;
+  border-color: #fca5a5;
+  background: #fef2f2;
+}
+
+.code-copy-button svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.visually-hidden,
+.copy-textarea {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .post-body pre code {
   padding: 0;
   background: transparent;
@@ -426,6 +501,16 @@ a {
     margin-left: -8px;
     border-right: 0;
     border-left: 0;
+  }
+
+  .post-body .code-block {
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+
+  .post-body .code-block pre {
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 
