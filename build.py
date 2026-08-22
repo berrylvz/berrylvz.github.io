@@ -32,7 +32,7 @@ FAVICON_PATH = ROOT / "favicon.svg"
 OUTPUT_DIR = ROOT / "public"
 OUTPUT_POSTS_DIR = OUTPUT_DIR / "posts"
 
-POST_NAME_RE = re.compile(r"^(?P<date>\d{4}-\d{2}-\d{2})-(?P<slug>[a-z0-9-]+)\.md$")
+POST_NAME_RE = re.compile(r"^(?P<name>[a-z0-9-]+)-(?P<suffix>[a-z0-9]{8})\.md$")
 REQUIRED_TEMPLATES = ("base.html", "index.html", "post.html")
 class BuildError(Exception):
     pass
@@ -205,9 +205,11 @@ def load_posts(site_config: dict[str, Any]) -> list[Post]:
     seen_output_paths: set[str] = set()
 
     for path in sorted(POSTS_DIR.glob("*.md")):
-        match = POST_NAME_RE.match(path.name)
-        if not match:
-            raise BuildError(f"Invalid post filename: {path.name}. Expected YYYY-MM-DD-slug.md")
+        if not POST_NAME_RE.fullmatch(path.name):
+            raise BuildError(
+                f"Invalid post filename: {path.name}. "
+                "Expected name-[a-z0-9]{8}.md"
+            )
 
         text = path.read_text(encoding="utf-8")
         front_matter, body = split_front_matter(text, path.name)
@@ -217,8 +219,6 @@ def load_posts(site_config: dict[str, Any]) -> list[Post]:
             raise BuildError(f"`title` in {path.name} must be a non-empty string")
 
         date_value = validate_date(front_matter.get("date"), path.name)
-        if date_value != match.group("date"):
-            raise BuildError(f"Filename date and front matter date mismatch in {path.name}")
 
         tags = validate_tags(front_matter.get("tags"), path.name)
 

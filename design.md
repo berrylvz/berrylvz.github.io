@@ -80,8 +80,8 @@ flowchart LR
 ```text
 my-blog/
 ├── posts/
-│   ├── 2026-07-08-hello-world.md
-│   └── 2026-07-09-robot-middleware.md
+│   ├── hello-world-k3m8p2qx.md
+│   └── robot-middleware-7nv4c1za.md
 │
 ├── templates/
 │   ├── base.html
@@ -187,21 +187,21 @@ navigation:
 文章源文件命名格式固定为：
 
 ```text
-YYYY-MM-DD-slug.md
+name-xxxxxxxx.md
 ```
 
 示例：
 
 ```text
-2026-07-08-hello-world.md
-2026-07-09-robot-middleware.md
+hello-world-k3m8p2qx.md
+robot-middleware-7nv4c1za.md
 ```
 
 命名规则说明：
 
-1. `YYYY-MM-DD` 为发布日期；
-2. `slug` 为文章唯一标识；
-3. `slug` 默认从文件名取得，不从文章标题自动生成；
+1. `name` 只允许小写字母、数字和连字符，由新建文章命令的 `--name` 参数提供；
+2. `xxxxxxxx` 为创建文章时生成的 8 位小写字母数字随机后缀；
+3. 发布日期只存储在 front matter 的 `date` 字段中；
 4. 文章标题允许为中文，但 URL 不直接从中文标题生成；
 5. 首页和文章页显示的标题均取 front matter 中的 `title`，而不是文件名。
 
@@ -217,23 +217,22 @@ public/posts/<source-name>.html
 其中 `<source-name>` 为去掉 `.md` 后的源文件名，例如：
 
 ```text
-posts/2026-07-08-hello-world.md
-→ public/posts/2026-07-08-hello-world.html
+posts/hello-world-k3m8p2qx.md
+→ public/posts/hello-world-k3m8p2qx.html
 ```
 
 采用此方案的原因是：
 
 1. 输出路径与源文件一一对应；
 2. 无需在 v1 中额外定义自定义 permalink 规则；
-3. 保留日期前缀后，能自然避免多数 slug 冲突。
+3. 随机后缀能避免同名文章的文件名和 URL 冲突。
 
 ### 6.3 冲突处理规则
 
 构建时必须检查以下冲突：
 
 1. 两篇文章生成相同输出路径；
-2. 源文件名不符合 `YYYY-MM-DD-slug.md` 规则；
-3. 文件名中的日期与 front matter 中的 `date` 不一致。
+2. 源文件名不符合 `name-xxxxxxxx.md` 规则，其中随机后缀必须为 8 位小写字母数字。
 
 出现任一冲突时，构建直接失败，不自动覆盖、不静默纠正。
 
@@ -492,8 +491,8 @@ flowchart TD
 public/
 ├── index.html
 ├── posts/
-│   ├── 2026-07-08-hello-world.html
-│   └── 2026-07-09-robot-middleware.html
+│   ├── hello-world-k3m8p2qx.html
+│   └── robot-middleware-7nv4c1za.html
 └── static/
     ├── css/
     │   └── style.css

@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import argparse
 import re
+import secrets
+import string
 import sys
 from datetime import date
 from pathlib import Path
@@ -9,33 +11,35 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent.resolve()
 POSTS_DIR = ROOT / "posts"
-SLUG_RE = re.compile(r"^[a-z0-9-]+$")
+NAME_RE = re.compile(r"^[a-z0-9-]+$")
+RANDOM_SUFFIX_LENGTH = 8
+RANDOM_SUFFIX_ALPHABET = string.ascii_lowercase + string.digits
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Create a new Markdown post under posts/ using today's date."
+        description="Create a new Markdown post under posts/ with a random suffix."
     )
     parser.add_argument(
         "-n",
         "--name",
         required=True,
-        help="Post slug, using lowercase letters, numbers, and hyphens.",
+        help="Post name, using lowercase letters, numbers, and hyphens.",
     )
     return parser
 
 
-def validate_slug(slug: str) -> str:
-    slug = slug.strip()
-    if not slug:
-        raise ValueError("slug cannot be empty")
-    if not SLUG_RE.fullmatch(slug):
-        raise ValueError("slug must contain only lowercase letters, numbers, and hyphens")
-    return slug
+def validate_name(name: str) -> str:
+    name = name.strip()
+    if not name:
+        raise ValueError("name cannot be empty")
+    if not NAME_RE.fullmatch(name):
+        raise ValueError("name must contain only lowercase letters, numbers, and hyphens")
+    return name
 
 
-def render_template(today: str, slug: str) -> str:
-    title = slug.replace("-", " ").title()
+def render_template(today: str, name: str) -> str:
+    title = name.replace("-", " ").title()
     return f"""---
 title: {title}
 date: {today}
@@ -49,14 +53,23 @@ draft: true
 """
 
 
-def create_post(slug: str) -> Path:
-    validated_slug = validate_slug(slug)
+def generate_random_suffix() -> str:
+    return "".join(
+        secrets.choice(RANDOM_SUFFIX_ALPHABET) for _ in range(RANDOM_SUFFIX_LENGTH)
+    )
+
+
+def create_post(name: str) -> Path:
+    validated_name = validate_name(name)
     today = date.today().isoformat()
     POSTS_DIR.mkdir(parents=True, exist_ok=True)
-    path = POSTS_DIR / f"{today}-{validated_slug}.md"
-    if path.exists():
-        raise FileExistsError(f"post already exists: {path.name}")
-    path.write_text(render_template(today, validated_slug), encoding="utf-8")
+
+    while True:
+        path = POSTS_DIR / f"{validated_name}-{generate_random_suffix()}.md"
+        if not path.exists():
+            break
+
+    path.write_text(render_template(today, validated_name), encoding="utf-8")
     return path
 
 
@@ -65,7 +78,7 @@ def main() -> int:
     args = parser.parse_args()
     try:
         path = create_post(args.name)
-    except (ValueError, FileExistsError) as exc:
+    except ValueError as exc:
         print(f"Create failed: {exc}", file=sys.stderr)
         return 1
 

@@ -89,13 +89,13 @@ base_url: /
 文章放在 `posts/` 目录下，文件名格式固定为：
 
 ```text
-YYYY-MM-DD-slug.md
+name-xxxxxxxx.md
 ```
 
 例如：
 
 ```text
-2026-07-08-hello-world.md
+hello-world-k3m8p2qx.md
 ```
 
 front matter 示例：
@@ -124,8 +124,8 @@ draft: false
 
 - `summary` 为空时，首页不会显示摘要
 - 系统不会再从正文自动提取摘要
-- 文件名中的日期必须与 front matter 中的 `date` 一致
-- `slug` 只允许小写字母、数字和连字符
+- `name` 只允许小写字母、数字和连字符
+- 文件名末尾的 8 位小写字母数字由新建文章脚本随机生成
 
 ## 新建文章
 
@@ -135,10 +135,10 @@ draft: false
 uv run python new.py -n hello-world
 ```
 
-它会在 `posts/` 下生成当天日期命名的文件，例如：
+它会在 `posts/` 下生成带随机后缀的文件，例如：
 
 ```text
-posts/2026-07-08-hello-world.md
+posts/hello-world-k3m8p2qx.md
 ```
 
 生成内容默认包含：

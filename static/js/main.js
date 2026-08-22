@@ -28,6 +28,14 @@ const ERROR_ICON = `
   </svg>`;
 const COPY_RESET_DELAY = 2000;
 
+const getCodeLanguage = (code) => {
+  const languageClass = [...code.classList].find((className) =>
+    className.startsWith("language-"),
+  );
+
+  return languageClass?.slice("language-".length) || "text";
+};
+
 const setCopyButtonState = (button, state) => {
   const states = {
     idle: { icon: COPY_ICON, label: "复制代码" },
@@ -89,16 +97,19 @@ document.querySelectorAll(".post-body pre > code").forEach((code) => {
   }
 
   const wrapper = document.createElement("div");
+  const languageLabel = document.createElement("span");
   const button = document.createElement("button");
   let resetTimer;
 
   wrapper.className = "code-block";
+  languageLabel.className = "code-language-label";
+  languageLabel.textContent = getCodeLanguage(code);
   button.className = "code-copy-button";
   button.type = "button";
   setCopyButtonState(button, "idle");
 
   pre.before(wrapper);
-  wrapper.append(pre, button);
+  wrapper.append(pre, languageLabel, button);
 
   button.addEventListener("click", async () => {
     window.clearTimeout(resetTimer);

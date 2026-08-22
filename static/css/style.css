@@ -318,6 +318,19 @@ a {
   padding-top: 48px;
 }
 
+.code-language-label {
+  position: absolute;
+  z-index: 1;
+  top: 13px;
+  left: 16px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 22px;
+  text-transform: uppercase;
+}
+
 .code-copy-button {
   position: absolute;
   z-index: 1;
